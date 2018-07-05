@@ -5,11 +5,16 @@ using System.Threading.Tasks;
 
 namespace AsyncConsole
 {
+    // https://blogs.msdn.microsoft.com/pfxteam/2012/01/20/await-synchronizationcontext-and-console-apps/
     public class Program
     {
         private static async Task Main(string[] args)
         {
-            await DemoAsync();
+            //await DemoAsync();
+            AsyncPump.Run(async delegate
+            {
+                await DemoAsync();
+            });
         }
 
         private static async Task DemoAsync()
