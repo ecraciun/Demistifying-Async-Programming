@@ -30,9 +30,12 @@
         {
             this.asyncVoidRaceBtn = new System.Windows.Forms.Button();
             this.asyncVoidCatchBtn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.deadlockBtn = new System.Windows.Forms.Button();
+            this.sameSyncContextBtn = new System.Windows.Forms.Button();
             this.outputTxtBox = new System.Windows.Forms.TextBox();
+            this.irrelevantSyncContextBtn = new System.Windows.Forms.Button();
+            this.startCTBtn = new System.Windows.Forms.Button();
+            this.cancelTaskBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // asyncVoidRaceBtn
@@ -55,42 +58,75 @@
             this.asyncVoidCatchBtn.UseVisualStyleBackColor = true;
             this.asyncVoidCatchBtn.Click += new System.EventHandler(this.asyncVoidCatchBtn_Click);
             // 
-            // button3
+            // deadlockBtn
             // 
-            this.button3.Location = new System.Drawing.Point(12, 70);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(218, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.deadlockBtn.Location = new System.Drawing.Point(12, 70);
+            this.deadlockBtn.Name = "deadlockBtn";
+            this.deadlockBtn.Size = new System.Drawing.Size(218, 23);
+            this.deadlockBtn.TabIndex = 2;
+            this.deadlockBtn.Text = "Deadlock";
+            this.deadlockBtn.UseVisualStyleBackColor = true;
+            this.deadlockBtn.Click += new System.EventHandler(this.deadlockBtn_Click);
             // 
-            // button4
+            // sameSyncContextBtn
             // 
-            this.button4.Location = new System.Drawing.Point(12, 99);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(218, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.sameSyncContextBtn.Location = new System.Drawing.Point(12, 99);
+            this.sameSyncContextBtn.Name = "sameSyncContextBtn";
+            this.sameSyncContextBtn.Size = new System.Drawing.Size(218, 23);
+            this.sameSyncContextBtn.TabIndex = 3;
+            this.sameSyncContextBtn.Text = "Same sync context";
+            this.sameSyncContextBtn.UseVisualStyleBackColor = true;
+            this.sameSyncContextBtn.Click += new System.EventHandler(this.sameSyncContextBtn_Click);
             // 
             // outputTxtBox
             // 
             this.outputTxtBox.Enabled = false;
-            this.outputTxtBox.Location = new System.Drawing.Point(374, 14);
+            this.outputTxtBox.Location = new System.Drawing.Point(236, 14);
             this.outputTxtBox.Multiline = true;
             this.outputTxtBox.Name = "outputTxtBox";
             this.outputTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.outputTxtBox.Size = new System.Drawing.Size(414, 424);
+            this.outputTxtBox.Size = new System.Drawing.Size(714, 424);
             this.outputTxtBox.TabIndex = 4;
+            // 
+            // irrelevantSyncContextBtn
+            // 
+            this.irrelevantSyncContextBtn.Location = new System.Drawing.Point(12, 128);
+            this.irrelevantSyncContextBtn.Name = "irrelevantSyncContextBtn";
+            this.irrelevantSyncContextBtn.Size = new System.Drawing.Size(218, 23);
+            this.irrelevantSyncContextBtn.TabIndex = 5;
+            this.irrelevantSyncContextBtn.Text = "Irrelevant sync context";
+            this.irrelevantSyncContextBtn.UseVisualStyleBackColor = true;
+            this.irrelevantSyncContextBtn.Click += new System.EventHandler(this.irrelevantSyncContextBtn_Click);
+            // 
+            // startCTBtn
+            // 
+            this.startCTBtn.Location = new System.Drawing.Point(12, 157);
+            this.startCTBtn.Name = "startCTBtn";
+            this.startCTBtn.Size = new System.Drawing.Size(218, 23);
+            this.startCTBtn.TabIndex = 6;
+            this.startCTBtn.Text = "Start Cancellable Task";
+            this.startCTBtn.UseVisualStyleBackColor = true;
+            // 
+            // cancelTaskBtn
+            // 
+            this.cancelTaskBtn.Location = new System.Drawing.Point(12, 186);
+            this.cancelTaskBtn.Name = "cancelTaskBtn";
+            this.cancelTaskBtn.Size = new System.Drawing.Size(218, 23);
+            this.cancelTaskBtn.TabIndex = 7;
+            this.cancelTaskBtn.Text = "Cancel Task";
+            this.cancelTaskBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(962, 450);
+            this.Controls.Add(this.cancelTaskBtn);
+            this.Controls.Add(this.startCTBtn);
+            this.Controls.Add(this.irrelevantSyncContextBtn);
             this.Controls.Add(this.outputTxtBox);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.sameSyncContextBtn);
+            this.Controls.Add(this.deadlockBtn);
             this.Controls.Add(this.asyncVoidCatchBtn);
             this.Controls.Add(this.asyncVoidRaceBtn);
             this.Name = "Form1";
@@ -104,9 +140,12 @@
 
         private System.Windows.Forms.Button asyncVoidRaceBtn;
         private System.Windows.Forms.Button asyncVoidCatchBtn;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button deadlockBtn;
+        private System.Windows.Forms.Button sameSyncContextBtn;
         private System.Windows.Forms.TextBox outputTxtBox;
+        private System.Windows.Forms.Button irrelevantSyncContextBtn;
+        private System.Windows.Forms.Button startCTBtn;
+        private System.Windows.Forms.Button cancelTaskBtn;
     }
 }
 
