@@ -69,29 +69,21 @@ namespace AsyncForms
             _dummyData = "We got the data!";
         }
 
-        private async Task<string> DoSomeMoreWorkAsync(bool returnOnSameSyncContext = true)
-        {
-            var beforeContextId = Thread.CurrentThread.ManagedThreadId;
-            await Task.Delay(100).ConfigureAwait(returnOnSameSyncContext);
-            var afterContextId = Thread.CurrentThread.ManagedThreadId;
-            return $"Task initially started on ManagedThreadId: {beforeContextId} and resumed on ManagedThreadId: {afterContextId}";
-        }
-
         private async void startCTBtn_Click(object sender, EventArgs e)
         {
             _cts = new CancellationTokenSource();
             cancelTaskBtn.Enabled = true;
             startCTBtn.Enabled = false;
-            var _cts2 = new CancellationTokenSource();
+            //var _cts2 = new CancellationTokenSource();
 
             _cancellableTask =  Task.Run(async () =>
             {
                 await Task.Delay(3000, _cts.Token);
                 Debug.WriteLine($"Waited for the first 3 sec. Cancellation is requested: {_cts.IsCancellationRequested}");
                 //throw new Exception("Test!");
-                //_cts.Token.ThrowIfCancellationRequested();
-                //await Task.Delay(3000, _cts.Token);
-                //Debug.WriteLine($"Waited for the last 3 sec. Cancellation is requested: {_cts.IsCancellationRequested}");
+                _cts.Token.ThrowIfCancellationRequested();
+                await Task.Delay(3000, _cts.Token);
+                Debug.WriteLine($"Waited for the last 3 sec. Cancellation is requested: {_cts.IsCancellationRequested}");
             }, _cts.Token);
 
             try
@@ -113,7 +105,7 @@ namespace AsyncForms
             finally
             {
                 _cts.Dispose();
-                _cts2.Dispose();
+                //_cts2.Dispose();
             }
         }
 
